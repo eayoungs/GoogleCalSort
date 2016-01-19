@@ -1,0 +1,31 @@
+PackratFormat: 1.4
+PackratVersion: 0.4.4
+RVersion: 3.2.2
+Repos: CRAN=https://cran.rstudio.com/
+
+Package: lubridate
+Source: CRAN
+Version: 1.5.0
+Hash: 038715dfce23c748aef45c22f46e4b75
+Requires: stringr
+
+Package: magrittr
+Source: CRAN
+Version: 1.5
+Hash: bdc4d48c3135e8f3b399536ddf160df4
+
+Package: packrat
+Source: CRAN
+Version: 0.4.4
+Hash: aed7d17407538df551a57caf6289c8bf
+
+Package: stringi
+Source: CRAN
+Version: 1.0-1
+Hash: cf342bc407bd5daec77ed1009d5244e1
+
+Package: stringr
+Source: CRAN
+Version: 1.0.0
+Hash: 2676dd5f88890910962b733b0f9540e1
+Requires: magrittr, stringi
