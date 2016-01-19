@@ -1,0 +1,12 @@
+# Sublime Text files
+*sublime-*
+
+# Data
+*.csv
+
+# RStudio project files
+packrat/lib*/
+.Rproj.user
+.Rhistory
+.RData
+.Rprofile
