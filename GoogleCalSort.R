@@ -19,6 +19,10 @@ sortGglCal <- function(f.name){
   #   for event categories
   df = read.csv(f.name, header = TRUE, stringsAsFactors =FALSE)
   df$Date = as.Date(df$Date, format = '%m/%d/%y')
+  df$Start.time = as.POSIXct(paste(df$Date, df$Start.time),
+                             format="%Y-%m-%d %H:%M")
+  df$End.time = as.POSIXct(paste(df$Date, df$End.time),
+                             format="%Y-%m-%d %H:%M")
 
   return(df)
 }
