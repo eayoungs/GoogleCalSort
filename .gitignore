@@ -7,6 +7,4 @@
 # RStudio project files
 packrat/lib*/
 .Rproj.user
-.Rhistory
-.RData
 .Rprofile
