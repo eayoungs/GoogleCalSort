@@ -37,7 +37,11 @@ sortGglCal <- function(df){
   # Returns:
   #   SummaryStats (DataFrame): Summary statistics describing time spent major
   #   categories
-  SummaryStats = unique(df$Project)
+  projCals = unique(df$Project)
+  for(i in length(projCals)){
+    SummaryStats <- df[df$Project==projCals[i],]
+  }
 
   return(SummaryStats)
 }
+
