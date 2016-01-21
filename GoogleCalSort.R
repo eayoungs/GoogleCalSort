@@ -7,7 +7,7 @@
 # install.packages("lubridate") ## Comment out after first call to source()
 library("lubridate")
 
-sortGglCal <- function(f.name){
+fmatGglCal <- function(f.name){
   # Reads exported calendar event data from Google Calendar and return a
   # dataframe with useful R types for manipulation with other R functions
   # 
@@ -25,4 +25,19 @@ sortGglCal <- function(f.name){
                              format="%Y-%m-%d %H:%M")
 
   return(df)
+}
+
+sortGglCal <- function(df){
+  # Takes a dataframe of Google calendar events and returns the percentage of
+  # time in each 'Project' (Calendar)
+  # 
+  # Args:
+  #   df (DataFrame): Google calendar data, formatted by the fmatGglCal function
+  # 
+  # Returns:
+  #   SummaryStats (DataFrame): Summary statistics describing time spent major
+  #   categories
+  SummaryStats = unique(df$Project)
+
+  return(SummaryStats)
 }
