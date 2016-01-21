@@ -23,6 +23,8 @@ fmatGglCal <- function(f.name){
                              format="%Y-%m-%d %H:%M")
   df$End.time = as.POSIXct(paste(df$Date, df$End.time),
                              format="%Y-%m-%d %H:%M")
+  df$Duration = as.POSIXct(paste(df$Date, df$Duration),
+                             format="%Y-%m-%d %H:%M")
 
   return(df)
 }
