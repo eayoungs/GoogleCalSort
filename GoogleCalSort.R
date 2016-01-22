@@ -19,12 +19,11 @@ fmatGglCal <- function(f.name){
   #   for event categories
   df = read.csv(f.name, header = TRUE, stringsAsFactors =FALSE)
   df$Date = as.Date(df$Date, format = '%m/%d/%y')
-  df$Start.time = as.POSIXct(paste(df$Date, df$Start.time),
+  df$Start.time = as.POSIXlt(paste(df$Date, df$Start.time),
                              format="%Y-%m-%d %H:%M")
-  df$End.time = as.POSIXct(paste(df$Date, df$End.time),
+  df$End.time = as.POSIXlt(paste(df$Date, df$End.time),
                              format="%Y-%m-%d %H:%M")
-  df$Duration = as.POSIXct(paste(df$Date, df$Duration),
-                             format="%Y-%m-%d %H:%M")
+  df$Duration = strptime(df$Duration, format="%H:%M")
 
   return(df)
 }
@@ -40,7 +39,7 @@ sortGglCal <- function(df){
   #   SummaryStats (DataFrame): Summary statistics describing time spent major
   #   categories
   projCals = unique(df$Project)
-  SummaryStats = vector("list", length(projCals))
+  SummaryStats = list()
 
   for(i in 1:length(projCals)){
      projCal <- df[df$Project==projCals[i],]
