@@ -44,7 +44,7 @@ sortGglCal <- function(df){
   for(i in 1:length(projCals)){
      projCal <- df[df$Project==projCals[i],]
      SummaryStats = rbind(data.frame(sum(projCal$End.time - projCal$Start.time),
-               row.names = projCals[i]), SummaryStats)
+                                     row.names = projCals[i]), SummaryStats)
   }
 
   return(SummaryStats)
