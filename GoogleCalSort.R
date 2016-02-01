@@ -20,9 +20,9 @@ fmatGglCal <- function(f.name){
   df = read.csv(f.name, header = TRUE, stringsAsFactors =FALSE)
   df$Date = as.Date(df$Date, format = '%m/%d/%y')
   df$Start.time = as.POSIXlt(paste(df$Date, df$Start.time),
-                             format="%Y-%m-%d %H:%M")
+                             format="%Y-%m-%d %H:%M %p")
   df$End.time = as.POSIXlt(paste(df$Date, df$End.time),
-                             format="%Y-%m-%d %H:%M")
+                             format="%Y-%m-%d %H:%M %p")
   df$Duration = strptime(df$Duration, format="%H:%M")
 
   return(df)
@@ -43,10 +43,15 @@ sortGglCal <- function(df){
 
   for(i in 1:length(projCals)){
      projCal <- df[df$Project==projCals[i],]
-     SummaryStats = rbind(data.frame(sum(projCal$End.time - projCal$Start.time),
-                                     row.names = projCals[i]), SummaryStats)
+     num.dur = sum(as.numeric(projCal$Duration))
+     psx.dur = as.POSIXlt(num.dur, origin = origin, format="%H:%M %p")
+     SummaryStats = rbind(data.frame(psx.dur, row.names = projCals[i]),
+                          SummaryStats)
+     # SummaryStats = rbind(data.frame(sum(difftime(projCal$End.time,
+     #                                              projCal$Start.time,
+     #                                              units = "hours")),
+     #                      row.names = projCals[i]), SummaryStats)
   }
 
   return(SummaryStats)
 }
-
